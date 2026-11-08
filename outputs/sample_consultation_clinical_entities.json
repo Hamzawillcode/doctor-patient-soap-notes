@@ -1,17 +1,22 @@
 {
   "source": "outputs/sample_consultation_roles.json",
-  "models": {
-    "DISEASE": "alvaroalon2/biobert_diseases_ner",
-    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  "model_set": "maccrobat",
+  "models": [
+    "models/biobert-maccrobat-ner"
+  ],
+  "label_to_category": {
+    "Sign_symptom": "SYMPTOM",
+    "Disease_disorder": "DISEASE",
+    "Medication": "MEDICATION",
+    "Duration": "DURATION",
+    "Severity": "SEVERITY",
+    "Dosage": "DOSAGE",
+    "Frequency": "FREQUENCY"
   },
   "label_notes": {
-    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
-    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+    "*": "Labels from MACCROBAT2018 annotation guidelines; model fine-tuned by train_biobert_ner.py - see models/biobert-maccrobat-ner/training_metrics.json for per-label test precision/recall/F1."
   },
-  "unsupported_labels": {
-    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
-    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
-  },
+  "unsupported_labels": {},
   "conversation": [
     {
       "speaker": "DOCTOR",
@@ -30,19 +35,30 @@
       "entities": [
         {
           "text": "fever",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 25,
           "end": 30,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.9688,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        },
+        {
+          "text": "three days",
+          "label": "Duration",
+          "start": 35,
+          "end": 45,
+          "confidence": 0.9349,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DURATION"
         },
         {
           "text": "dry cough",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 53,
           "end": 62,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.8742,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -52,7 +68,17 @@
       "start": 7.0,
       "end": 9.16,
       "text": "Have you taken any medication for it?",
-      "entities": []
+      "entities": [
+        {
+          "text": "medication",
+          "label": "Medication",
+          "start": 19,
+          "end": 29,
+          "confidence": 0.7871,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
+        }
+      ]
     },
     {
       "speaker": "PATIENT",
@@ -62,18 +88,28 @@
       "text": "Just paracetamol, 500 milligrams, twice a day.",
       "entities": [
         {
-          "text": "paracetamol",
-          "label": "CHEMICAL",
-          "start": 5,
-          "end": 16,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_chemical_ner"
+          "text": "milligrams",
+          "label": "Dosage",
+          "start": 22,
+          "end": 32,
+          "confidence": 0.6382,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DOSAGE"
+        },
+        {
+          "text": "twice a day",
+          "label": "Dosage",
+          "start": 34,
+          "end": 45,
+          "confidence": 0.6021,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DOSAGE"
         }
       ]
     }
   ],
   "summary": {
-    "DISEASE": [
+    "Sign_symptom": [
       {
         "text": "fever",
         "speaker": "PATIENT"
@@ -83,9 +119,25 @@
         "speaker": "PATIENT"
       }
     ],
-    "CHEMICAL": [
+    "Duration": [
       {
-        "text": "paracetamol",
+        "text": "three days",
+        "speaker": "PATIENT"
+      }
+    ],
+    "Medication": [
+      {
+        "text": "medication",
+        "speaker": "DOCTOR"
+      }
+    ],
+    "Dosage": [
+      {
+        "text": "milligrams",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "twice a day",
         "speaker": "PATIENT"
       }
     ]

@@ -1,17 +1,22 @@
 {
   "source": "outputs/sample_consultation_2_roles.json",
-  "models": {
-    "DISEASE": "alvaroalon2/biobert_diseases_ner",
-    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  "model_set": "maccrobat",
+  "models": [
+    "models/biobert-maccrobat-ner"
+  ],
+  "label_to_category": {
+    "Sign_symptom": "SYMPTOM",
+    "Disease_disorder": "DISEASE",
+    "Medication": "MEDICATION",
+    "Duration": "DURATION",
+    "Severity": "SEVERITY",
+    "Dosage": "DOSAGE",
+    "Frequency": "FREQUENCY"
   },
   "label_notes": {
-    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
-    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+    "*": "Labels from MACCROBAT2018 annotation guidelines; model fine-tuned by train_biobert_ner.py - see models/biobert-maccrobat-ner/training_metrics.json for per-label test precision/recall/F1."
   },
-  "unsupported_labels": {
-    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
-    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
-  },
+  "unsupported_labels": {},
   "conversation": [
     {
       "speaker": "PATIENT",
@@ -37,12 +42,22 @@
       "text": "My head has been hurting since yesterday, and I feel dizzy.",
       "entities": [
         {
+          "text": "hurting",
+          "label": "Sign_symptom",
+          "start": 17,
+          "end": 24,
+          "confidence": 0.7544,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        },
+        {
           "text": "dizzy",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 53,
           "end": 58,
-          "confidence": 0.999,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.8373,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -55,19 +70,21 @@
       "entities": [
         {
           "text": "nausea",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 17,
           "end": 23,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.9335,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         },
         {
           "text": "vomiting",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 27,
           "end": 35,
-          "confidence": 0.999,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.8785,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -104,19 +121,12 @@
       "entities": [
         {
           "text": "migraine",
-          "label": "DISEASE",
+          "label": "Disease_disorder",
           "start": 16,
           "end": 24,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
-        },
-        {
-          "text": "pain",
-          "label": "DISEASE",
-          "start": 61,
-          "end": 65,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.469,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DISEASE"
         }
       ]
     },
@@ -130,7 +140,11 @@
     }
   ],
   "summary": {
-    "DISEASE": [
+    "Sign_symptom": [
+      {
+        "text": "hurting",
+        "speaker": "PATIENT"
+      },
       {
         "text": "dizzy",
         "speaker": "PATIENT"
@@ -142,13 +156,11 @@
       {
         "text": "vomiting",
         "speaker": "DOCTOR"
-      },
+      }
+    ],
+    "Disease_disorder": [
       {
         "text": "migraine",
-        "speaker": "DOCTOR"
-      },
-      {
-        "text": "pain",
         "speaker": "DOCTOR"
       }
     ]

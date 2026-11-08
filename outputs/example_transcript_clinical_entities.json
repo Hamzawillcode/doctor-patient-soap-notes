@@ -1,17 +1,22 @@
 {
   "source": "examples/example_transcript.txt",
-  "models": {
-    "DISEASE": "alvaroalon2/biobert_diseases_ner",
-    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  "model_set": "maccrobat",
+  "models": [
+    "models/biobert-maccrobat-ner"
+  ],
+  "label_to_category": {
+    "Sign_symptom": "SYMPTOM",
+    "Disease_disorder": "DISEASE",
+    "Medication": "MEDICATION",
+    "Duration": "DURATION",
+    "Severity": "SEVERITY",
+    "Dosage": "DOSAGE",
+    "Frequency": "FREQUENCY"
   },
   "label_notes": {
-    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
-    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+    "*": "Labels from MACCROBAT2018 annotation guidelines; model fine-tuned by train_biobert_ner.py - see models/biobert-maccrobat-ner/training_metrics.json for per-label test precision/recall/F1."
   },
-  "unsupported_labels": {
-    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
-    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
-  },
+  "unsupported_labels": {},
   "conversation": [
     {
       "speaker": "PATIENT",
@@ -22,19 +27,30 @@
       "entities": [
         {
           "text": "fever",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 11,
           "end": 16,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.9569,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        },
+        {
+          "text": "three days",
+          "label": "Duration",
+          "start": 21,
+          "end": 31,
+          "confidence": 0.9287,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DURATION"
         },
         {
           "text": "headache",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 45,
           "end": 53,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.9556,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -47,11 +63,12 @@
       "entities": [
         {
           "text": "cough",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 14,
           "end": 19,
-          "confidence": 0.9985,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.8481,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -64,11 +81,12 @@
       "entities": [
         {
           "text": "cough",
-          "label": "DISEASE",
+          "label": "Sign_symptom",
           "start": 23,
           "end": 28,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_diseases_ner"
+          "confidence": 0.9522,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
         }
       ]
     },
@@ -78,7 +96,17 @@
       "start": null,
       "end": null,
       "text": "Are you taking any medication?",
-      "entities": []
+      "entities": [
+        {
+          "text": "medication",
+          "label": "Medication",
+          "start": 19,
+          "end": 29,
+          "confidence": 0.5898,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
+        }
+      ]
     },
     {
       "speaker": "PATIENT",
@@ -89,17 +117,18 @@
       "entities": [
         {
           "text": "paracetamol",
-          "label": "CHEMICAL",
+          "label": "Medication",
           "start": 7,
           "end": 18,
-          "confidence": 1.0,
-          "model": "alvaroalon2/biobert_chemical_ner"
+          "confidence": 0.9052,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
         }
       ]
     }
   ],
   "summary": {
-    "DISEASE": [
+    "Sign_symptom": [
       {
         "text": "fever",
         "speaker": "PATIENT"
@@ -117,7 +146,17 @@
         "speaker": "PATIENT"
       }
     ],
-    "CHEMICAL": [
+    "Duration": [
+      {
+        "text": "three days",
+        "speaker": "PATIENT"
+      }
+    ],
+    "Medication": [
+      {
+        "text": "medication",
+        "speaker": "DOCTOR"
+      },
       {
         "text": "paracetamol",
         "speaker": "PATIENT"

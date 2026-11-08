@@ -34,8 +34,24 @@ python align.py audio/sample_consultation.wav         # -> outputs/sample_consul
 python identify_roles.py audio/sample_consultation.wav  # -> outputs/sample_consultation_roles.json
 python clinical_extraction.py audio/sample_consultation.wav   # -> outputs/sample_consultation_clinical_entities.json
 python clinical_extraction.py --transcript examples/example_transcript.txt
+python clinical_extraction.py --transcript examples/example_transcript.txt --models bc5cdr   # public BioBERT checkpoints
 ```
 
 `audio/sample_consultation.wav` and `audio/sample_consultation_2.wav` are synthetic two-voice clips made with
 macOS `say` (clip 2 is harder: the patient speaks first and pauses are only 0.15 s).
 Other files in `audio/` and `outputs/` are git-ignored so real patient recordings are never committed.
+
+## Stage 5: fine-tuning BioBERT on MACCROBAT2018
+
+`clinical_extraction.py` uses our fine-tuned model by default (`--models maccrobat`). To recreate it:
+
+```bash
+mkdir -p data/maccrobat
+curl -L -o data/maccrobat/data.jsonl \
+  https://huggingface.co/datasets/ktgiahieu/maccrobat2018_2020/resolve/main/data.jsonl
+python train_biobert_ner.py          # ~12 min on Apple M4 (mps); saves models/biobert-maccrobat-ner/
+```
+
+Dataset: MACCROBAT2018 — Caufield, J. Harry (2019), figshare, https://doi.org/10.6084/m9.figshare.9764942 (CC-BY-4.0),
+via the Hugging Face copy `ktgiahieu/maccrobat2018_2020` (duplicates removed during training).
+Test results are in `outputs/biobert_maccrobat_training_metrics.json`.

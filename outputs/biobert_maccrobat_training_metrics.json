@@ -1,0 +1,121 @@
+{
+  "base_model": "dmis-lab/biobert-base-cased-v1.2",
+  "dataset": "MACCROBAT2018 (ktgiahieu/maccrobat2018_2020, deduplicated)",
+  "labels": [
+    "O",
+    "B-Sign_symptom",
+    "I-Sign_symptom",
+    "B-Disease_disorder",
+    "I-Disease_disorder",
+    "B-Medication",
+    "I-Medication",
+    "B-Duration",
+    "I-Duration",
+    "B-Severity",
+    "I-Severity",
+    "B-Dosage",
+    "I-Dosage",
+    "B-Frequency",
+    "I-Frequency"
+  ],
+  "split_documents": {
+    "train": 160,
+    "validation": 20,
+    "test": 20
+  },
+  "hyperparameters": {
+    "epochs": 5,
+    "batch_size": 16,
+    "lr": 3e-05,
+    "seed": 42
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.5314,
+      "val_f1": 0.3329,
+      "minutes": 2.2
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.146,
+      "val_f1": 0.4984,
+      "minutes": 2.1
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0981,
+      "val_f1": 0.6123,
+      "minutes": 2.2
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0629,
+      "val_f1": 0.5659,
+      "minutes": 2.3
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0427,
+      "val_f1": 0.5722,
+      "minutes": 2.4
+    }
+  ],
+  "best_val_f1": 0.6123,
+  "test_report": {
+    "Disease_disorder": {
+      "precision": 0.36,
+      "recall": 0.42857142857142855,
+      "f1-score": 0.391304347826087,
+      "support": 63.0
+    },
+    "Dosage": {
+      "precision": 0.36363636363636365,
+      "recall": 0.3333333333333333,
+      "f1-score": 0.34782608695652173,
+      "support": 12.0
+    },
+    "Duration": {
+      "precision": 0.5862068965517241,
+      "recall": 0.7391304347826086,
+      "f1-score": 0.6538461538461539,
+      "support": 23.0
+    },
+    "Medication": {
+      "precision": 0.5514018691588785,
+      "recall": 0.8082191780821918,
+      "f1-score": 0.6555555555555554,
+      "support": 73.0
+    },
+    "Severity": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 1.0
+    },
+    "Sign_symptom": {
+      "precision": 0.5607843137254902,
+      "recall": 0.6529680365296804,
+      "f1-score": 0.6033755274261604,
+      "support": 219.0
+    },
+    "micro avg": {
+      "precision": 0.5241090146750524,
+      "recall": 0.639386189258312,
+      "f1-score": 0.576036866359447,
+      "support": 391.0
+    },
+    "macro avg": {
+      "precision": 0.40367157384540936,
+      "recall": 0.4937037352165404,
+      "f1-score": 0.4419846119350797,
+      "support": 391.0
+    },
+    "weighted avg": {
+      "precision": 0.5206918059816023,
+      "recall": 0.639386189258312,
+      "f1-score": 0.572530292984317,
+      "support": 391.0
+    }
+  }
+}

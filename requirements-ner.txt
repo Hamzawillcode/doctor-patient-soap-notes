@@ -1,1 +1,2 @@
 transformers==5.22.2
+seqeval==1.2.2

@@ -13,19 +13,25 @@ Step 5 of the pipeline: Clinical information extraction with BioBERT (Named Enti
             ↓
     outputs/<name>_clinical_entities.json
 
-Models (both fine-tuned BioBERT, BertForTokenClassification):
-    alvaroalon2/biobert_diseases_ner   labels: B-DISEASE, I-DISEASE, O   (BC5CDR-disease + NCBI-disease)
-    alvaroalon2/biobert_chemical_ner   labels: B-CHEMICAL, I-CHEMICAL, O (BC5CDR-chemical + BC4CHEMD)
+Two model sets (all are BioBERT + a token-classification layer, BertForTokenClassification):
 
-Labels are reported EXACTLY as the models predict them (DISEASE, CHEMICAL).
-    - Symptoms (fever, headache, nausea) appear under DISEASE, because BC5CDR annotates signs and
-      symptoms as diseases. The model cannot tell a symptom from a disease.
-    - Drugs appear under CHEMICAL, which also covers non-drug chemicals.
-    - DURATION and SEVERITY are NOT supported by these models and are NOT extracted.
+  --models maccrobat  (default when trained)  OUR fine-tuned model, made by train_biobert_ner.py
+      models/biobert-maccrobat-ner   dmis-lab/biobert-base-cased-v1.2 fine-tuned on MACCROBAT2018
+      labels: Sign_symptom, Disease_disorder, Medication, Duration, Severity, Dosage, Frequency
+
+  --models bc5cdr     public checkpoints (first version of this stage)
+      alvaroalon2/biobert_diseases_ner   labels: DISEASE  (BC5CDR-disease + NCBI-disease)
+      alvaroalon2/biobert_chemical_ner   labels: CHEMICAL (BC5CDR-chemical + BC4CHEMD)
+      Symptoms appear under DISEASE; DURATION and SEVERITY are not supported.
+
+"label" is ALWAYS the model's own predicted label. For the MACCROBAT model an extra "category"
+field gives the project name (Sign_symptom -> SYMPTOM, ...). This is a fixed 1-to-1 renaming of
+labels the model was actually trained on - not a guess.
 
 Usage:
     python clinical_extraction.py audio/sample_consultation_2.wav
     python clinical_extraction.py --transcript examples/example_transcript.txt
+    python clinical_extraction.py --transcript examples/example_transcript.txt --models bc5cdr
     python clinical_extraction.py audio/sample_consultation_2.wav --raw     # show token-level model output
 """
 
@@ -36,15 +42,33 @@ from pathlib import Path
 import torch
 from transformers import AutoModelForTokenClassification, AutoTokenizer
 
-MODELS = {
-    "DISEASE": "alvaroalon2/biobert_diseases_ner",
-    "CHEMICAL": "alvaroalon2/biobert_chemical_ner",
+FINETUNED_PATH = "models/biobert-maccrobat-ner"
+MODEL_SETS = {
+    "maccrobat": {
+        "models": [FINETUNED_PATH],
+        # Project category for each label the model was trained on (1-to-1, documented).
+        "categories": {"Sign_symptom": "SYMPTOM", "Disease_disorder": "DISEASE", "Medication": "MEDICATION",
+                       "Duration": "DURATION", "Severity": "SEVERITY", "Dosage": "DOSAGE",
+                       "Frequency": "FREQUENCY"},
+        "label_notes": {"*": "Labels from MACCROBAT2018 annotation guidelines; model fine-tuned by "
+                             "train_biobert_ner.py - see models/biobert-maccrobat-ner/training_metrics.json "
+                             "for per-label test precision/recall/F1."},
+        "unsupported": {},
+    },
+    "bc5cdr": {
+        "models": ["alvaroalon2/biobert_diseases_ner", "alvaroalon2/biobert_chemical_ner"],
+        "categories": {},   # no project categories: labels are reported as-is
+        "label_notes": {
+            "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
+            "CHEMICAL": "Chemicals including drugs; not limited to medications.",
+        },
+        "unsupported": {
+            "DURATION": "No public BioBERT NER checkpoint is trained with a duration label.",
+            "SEVERITY": "No public BioBERT NER checkpoint is trained with a severity label.",
+        },
+    },
 }
-UNSUPPORTED = {
-    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
-    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label.",
-}
-OUTSIDE_LABELS = {"O", "0"}   # the disease model spells "outside" as the digit '0'
+OUTSIDE_LABELS = {"O", "0"}   # the alvaroalon2 disease model spells "outside" as the digit '0'
 
 
 class BioBertNER:
@@ -161,6 +185,9 @@ def main():
     parser.add_argument("audio", nargs="?", help="Audio file (used to find outputs/<name>_roles.json)")
     parser.add_argument("--roles", help="Roles JSON from identify_roles.py")
     parser.add_argument("--transcript", help="Plain text file with lines like 'PATIENT: text'")
+    parser.add_argument("--models", choices=list(MODEL_SETS),
+                        default="maccrobat" if Path(FINETUNED_PATH).exists() else "bc5cdr",
+                        help="maccrobat = our fine-tuned BioBERT (default once trained); bc5cdr = public checkpoints")
     parser.add_argument("--raw", action="store_true", help="Print token-level model output")
     parser.add_argument("--output", help="Where to save JSON (default: outputs/<name>_clinical_entities.json)")
     args = parser.parse_args()
@@ -171,8 +198,12 @@ def main():
 
     utterances, source, stem = load_conversation(args)
 
-    print("Loading BioBERT NER models ...")
-    models = [BioBertNER(name) for name in MODELS.values()]
+    model_set = MODEL_SETS[args.models]
+    if args.models == "maccrobat" and not Path(FINETUNED_PATH).exists():
+        raise SystemExit(f"{FINETUNED_PATH} not found - run `python train_biobert_ner.py` first.")
+    print(f"Loading BioBERT NER models ({args.models}): {model_set['models']} ...")
+    models = [BioBertNER(name) for name in model_set["models"]]
+    categories = model_set["categories"]
 
     conversation = []
     print("\n" + "=" * 60)
@@ -188,9 +219,12 @@ def main():
             if args.raw:
                 print_raw(m.name, u["text"], tokens)
         entities.sort(key=lambda e: e["start"])
+        for e in entities:
+            e["category"] = categories.get(e["label"])     # None when there is no documented mapping
         print("Extracted Entities:" if entities else "Extracted Entities: none")
         for e in entities:
-            print(f"- {e['text']} → {e['label']}  (confidence {e['confidence']:.2f}, chars {e['start']}-{e['end']})")
+            shown = f"{e['label']} ({e['category']})" if e["category"] else e["label"]
+            print(f"- {e['text']} → {shown}  (confidence {e['confidence']:.2f}, chars {e['start']}-{e['end']})")
         print()
         conversation.append({"speaker": role, "speaker_label": u.get("speaker"),
                              "start": u.get("start"), "end": u.get("end"),
@@ -208,18 +242,18 @@ def main():
         print(f"{label} ({len(items)}):")
         for it in items:
             print(f"   {it['text']:<20} said by {it['speaker']}")
-    print("\nNOT EXTRACTED (unsupported by the BioBERT models):")
-    for label, why in UNSUPPORTED.items():
-        print(f"   {label}: {why}")
+    if model_set["unsupported"]:
+        print("\nNOT EXTRACTED (unsupported by these BioBERT models):")
+        for label, why in model_set["unsupported"].items():
+            print(f"   {label}: {why}")
 
     result = {
         "source": source,
-        "models": MODELS,
-        "label_notes": {
-            "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
-            "CHEMICAL": "Chemicals including drugs; not limited to medications.",
-        },
-        "unsupported_labels": UNSUPPORTED,
+        "model_set": args.models,
+        "models": model_set["models"],
+        "label_to_category": categories,
+        "label_notes": model_set["label_notes"],
+        "unsupported_labels": model_set["unsupported"],
         "conversation": conversation,
         "summary": summary,
     }
