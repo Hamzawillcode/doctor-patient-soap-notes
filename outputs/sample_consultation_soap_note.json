@@ -1,0 +1,67 @@
+{
+  "source": "outputs/sample_consultation_soap_facts.json",
+  "language_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "generation": {
+    "prompt_tokens": 686,
+    "generated_tokens": 88,
+    "seconds": 11.1,
+    "decoding": "greedy"
+  },
+  "system_prompt": "You are a clinical documentation assistant. You write SOAP notes from a list of facts that were extracted from a doctor-patient conversation.\n\nStrict rules:\n1. Use ONLY the facts provided. Do not add any symptom, diagnosis, medication, dose, number, test or advice that is not in the facts. Do not use outside medical knowledge.\n2. End EVERY bullet line with the IDs of the facts it uses, in square brackets, e.g. [F2] or [F2, F5].\n3. Put each fact only in its own section (the \"section\" field): S = SUBJECTIVE, O = OBJECTIVE, A = ASSESSMENT, P = PLAN.\n4. Facts with status \"absent\" are things the patient DENIED: write them as denied (e.g. \"Denies fever\").\n5. Facts with status \"unclear\" must be written as uncertain and should include the patient's answer.\n6. ASSESSMENT and PLAN must only restate what the doctor said. Never suggest a diagnosis or treatment yourself.\n7. If a section has no facts, write exactly: \"- Not documented in the conversation.\"\n8. Use concise clinical language. Output only the note, with the four headings SUBJECTIVE, OBJECTIVE, ASSESSMENT, PLAN, each followed by bullet lines starting with \"- \".",
+  "facts_given": [
+    {
+      "id": "F1",
+      "section": "S",
+      "type": "symptom",
+      "fact": "fever",
+      "status": "present",
+      "details": {
+        "duration": [
+          "three days"
+        ]
+      },
+      "evidence": [
+        "PATIENT: \"I have been experiencing fever for three days, and a dry cough.\""
+      ]
+    },
+    {
+      "id": "F2",
+      "section": "S",
+      "type": "symptom",
+      "fact": "dry cough",
+      "status": "present",
+      "evidence": [
+        "PATIENT: \"I have been experiencing fever for three days, and a dry cough.\""
+      ]
+    },
+    {
+      "id": "F3",
+      "section": "S",
+      "type": "unattached_dosage",
+      "fact": "milligrams",
+      "status": "present",
+      "evidence": [
+        "PATIENT: \"Just paracetamol, 500 milligrams, twice a day.\""
+      ]
+    },
+    {
+      "id": "F4",
+      "section": "S",
+      "type": "unattached_dosage",
+      "fact": "twice a day",
+      "status": "present",
+      "evidence": [
+        "PATIENT: \"Just paracetamol, 500 milligrams, twice a day.\""
+      ]
+    }
+  ],
+  "note": "SUBJECTIVE:  \n- Fever for three days, with dry cough [F1]  \n- Dry cough present [F2]  \n- Taking paracetamol 500 milligrams twice a day [F3, F4]  \n\nOBJECTIVE:  \n- Not documented in the conversation.  \n\nASSESSMENT:  \n- Not documented in the conversation.  \n\nPLAN:  \n- Not documented in the conversation.",
+  "template_note_baseline": "SUBJECTIVE\n  Reported symptoms/conditions: fever (duration: three days); dry cough\n  Other details (not linked to a symptom/medication): milligrams; twice a day\nOBJECTIVE\n  Not documented in the conversation.\nASSESSMENT (as stated by the doctor)\n  Not documented in the conversation.\nPLAN (as stated by the doctor)\n  Not documented in the conversation.",
+  "grounding_check": {
+    "lines": 6,
+    "problems": [],
+    "passed": true,
+    "coverage": 1.0,
+    "facts_not_used": []
+  }
+}

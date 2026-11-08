@@ -1,0 +1,120 @@
+{
+  "source": "outputs/sample_consultation_2_soap_facts.json",
+  "language_model": "Qwen/Qwen3-4B-Instruct-2507",
+  "generation": {
+    "prompt_tokens": 983,
+    "generated_tokens": 112,
+    "seconds": 13.5,
+    "decoding": "greedy"
+  },
+  "system_prompt": "You are a clinical documentation assistant. You write SOAP notes from a list of facts that were extracted from a doctor-patient conversation.\n\nStrict rules:\n1. Use ONLY the facts provided. Do not add any symptom, diagnosis, medication, dose, number, test or advice that is not in the facts. Do not use outside medical knowledge.\n2. End EVERY bullet line with the IDs of the facts it uses, in square brackets, e.g. [F2] or [F2, F5].\n3. Put each fact only in its own section (the \"section\" field): S = SUBJECTIVE, O = OBJECTIVE, A = ASSESSMENT, P = PLAN.\n4. Facts with status \"absent\" are things the patient DENIED: write them as denied (e.g. \"Denies fever\").\n5. Facts with status \"unclear\" must be written as uncertain and should include the patient's answer.\n6. ASSESSMENT and PLAN must only restate what the doctor said. Never suggest a diagnosis or treatment yourself.\n7. If a section has no facts, write exactly: \"- Not documented in the conversation.\"\n8. Use concise clinical language. Output only the note, with the four headings SUBJECTIVE, OBJECTIVE, ASSESSMENT, PLAN, each followed by bullet lines starting with \"- \".",
+  "facts_given": [
+    {
+      "id": "F1",
+      "section": "S",
+      "type": "symptom",
+      "fact": "hurting",
+      "status": "present",
+      "evidence": [
+        "PATIENT: \"My head has been hurting since yesterday, and I feel dizzy.\""
+      ]
+    },
+    {
+      "id": "F2",
+      "section": "S",
+      "type": "symptom",
+      "fact": "dizzy",
+      "status": "present",
+      "evidence": [
+        "PATIENT: \"My head has been hurting since yesterday, and I feel dizzy.\""
+      ]
+    },
+    {
+      "id": "F3",
+      "section": "S",
+      "type": "symptom",
+      "fact": "nausea",
+      "status": "present",
+      "evidence": [
+        "DOCTOR: \"Have you had any nausea or vomiting?\"",
+        "PATIENT: \"Yes.\""
+      ]
+    },
+    {
+      "id": "F4",
+      "section": "S",
+      "type": "symptom",
+      "fact": "vomiting",
+      "status": "present",
+      "evidence": [
+        "DOCTOR: \"Have you had any nausea or vomiting?\"",
+        "PATIENT: \"Yes.\""
+      ]
+    },
+    {
+      "id": "F5",
+      "section": "O",
+      "type": "examination",
+      "fact": "Let me check your blood pressure.",
+      "status": "stated by doctor",
+      "evidence": [
+        "DOCTOR: \"Let me check your blood pressure.\""
+      ]
+    },
+    {
+      "id": "F6",
+      "section": "S",
+      "type": "patient_concern",
+      "fact": "Is it serious?",
+      "status": "asked",
+      "evidence": [
+        "PATIENT: \"Is it serious?\""
+      ]
+    },
+    {
+      "id": "F7",
+      "section": "A",
+      "type": "doctor_impression",
+      "fact": "migraine",
+      "status": "stated by doctor",
+      "evidence": [
+        "DOCTOR: \"It looks like a migraine.\""
+      ]
+    },
+    {
+      "id": "F8",
+      "section": "P",
+      "type": "doctor_plan",
+      "fact": "I will prescribe something for the pain.",
+      "status": "stated by doctor",
+      "evidence": [
+        "DOCTOR: \"I will prescribe something for the pain.\""
+      ]
+    },
+    {
+      "id": "F9",
+      "section": "P",
+      "type": "doctor_plan",
+      "fact": "Come back if it gets worse.",
+      "status": "stated by doctor",
+      "evidence": [
+        "DOCTOR: \"Come back if it gets worse.\""
+      ]
+    }
+  ],
+  "note": "SUBJECTIVE:  \n- Headache present since yesterday with dizziness and nausea [F1, F2, F3]  \n- Patient reports vomiting [F4]  \n- Patient asks if symptoms are serious [F6]  \n\nOBJECTIVE:  \n- Doctor checks blood pressure [F5]  \n\nASSESSMENT:  \n- Doctor states it looks like a migraine [F7]  \n\nPLAN:  \n- Doctor will prescribe something for the pain [F8]  \n- Patient instructed to come back if symptoms worsen [F9]",
+  "template_note_baseline": "SUBJECTIVE\n  Reported symptoms/conditions: hurting; dizzy; nausea; vomiting\n  Patient questions/concerns: \"Is it serious?\"\nOBJECTIVE\n  - \"Let me check your blood pressure.\"\nASSESSMENT (as stated by the doctor)\n  - migraine  [\"It looks like a migraine.\"]\nPLAN (as stated by the doctor)\n  - \"I will prescribe something for the pain.\"\n  - \"Come back if it gets worse.\"",
+  "grounding_check": {
+    "lines": 7,
+    "problems": [
+      {
+        "check": "clinical term",
+        "line": "Headache present since yesterday with dizziness and nausea [F1, F2, F3]",
+        "issue": "'Headache' (Sign_symptom) not found in cited evidence"
+      }
+    ],
+    "passed": false,
+    "coverage": 1.0,
+    "facts_not_used": []
+  }
+}
