@@ -1,0 +1,5 @@
+PATIENT: I have had fever for three days and a severe headache.
+DOCTOR: Do you have a cough?
+PATIENT: Yes, I have had a mild cough since yesterday.
+DOCTOR: Are you taking any medication?
+PATIENT: I took paracetamol.

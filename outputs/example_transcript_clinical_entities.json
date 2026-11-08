@@ -1,0 +1,127 @@
+{
+  "source": "examples/example_transcript.txt",
+  "models": {
+    "DISEASE": "alvaroalon2/biobert_diseases_ner",
+    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  },
+  "label_notes": {
+    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
+    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+  },
+  "unsupported_labels": {
+    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
+    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
+  },
+  "conversation": [
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "I have had fever for three days and a severe headache.",
+      "entities": [
+        {
+          "text": "fever",
+          "label": "DISEASE",
+          "start": 11,
+          "end": 16,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        },
+        {
+          "text": "headache",
+          "label": "DISEASE",
+          "start": 45,
+          "end": 53,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Do you have a cough?",
+      "entities": [
+        {
+          "text": "cough",
+          "label": "DISEASE",
+          "start": 14,
+          "end": 19,
+          "confidence": 0.9985,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Yes, I have had a mild cough since yesterday.",
+      "entities": [
+        {
+          "text": "cough",
+          "label": "DISEASE",
+          "start": 23,
+          "end": 28,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Are you taking any medication?",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "I took paracetamol.",
+      "entities": [
+        {
+          "text": "paracetamol",
+          "label": "CHEMICAL",
+          "start": 7,
+          "end": 18,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_chemical_ner"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "DISEASE": [
+      {
+        "text": "fever",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "headache",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "cough",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "cough",
+        "speaker": "PATIENT"
+      }
+    ],
+    "CHEMICAL": [
+      {
+        "text": "paracetamol",
+        "speaker": "PATIENT"
+      }
+    ]
+  }
+}

@@ -9,7 +9,7 @@ built one stage at a time.
 | 2. Speaker diarization (pyannote.audio) | done | `diarize.py` | `docs/02_speaker_diarization_notes.pdf` |
 | 3. Timestamp alignment (max temporal overlap) | done | `align.py` | `docs/03_timestamp_alignment_notes.pdf` |
 | 4. Doctor / patient role identification (rule-based) | done | `identify_roles.py` | `docs/04_role_identification_notes.pdf` |
-| 5. Clinical NER | not started | | |
+| 5. Clinical NER (BioBERT) | done | `clinical_extraction.py` | `docs/05_clinical_ner_biobert_notes.pdf` |
 | 6. SOAP note generation | not started | | |
 
 ## Setup
@@ -19,6 +19,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt                 # Stage 1: faster-whisper
 pip install -r requirements-diarization.txt     # Stage 2: pyannote.audio (~700 MB, includes PyTorch)
+pip install -r requirements-ner.txt             # Stage 5: transformers (BioBERT models ~860 MB download on first run)
 ```
 
 Stage 2 uses the gated model `pyannote/speaker-diarization-community-1`:
@@ -31,6 +32,8 @@ python transcribe.py audio/sample_consultation.wav     # -> outputs/sample_consu
 python diarize.py audio/sample_consultation.wav        # -> outputs/sample_consultation_diarization.json
 python align.py audio/sample_consultation.wav         # -> outputs/sample_consultation_aligned.json
 python identify_roles.py audio/sample_consultation.wav  # -> outputs/sample_consultation_roles.json
+python clinical_extraction.py audio/sample_consultation.wav   # -> outputs/sample_consultation_clinical_entities.json
+python clinical_extraction.py --transcript examples/example_transcript.txt
 ```
 
 `audio/sample_consultation.wav` and `audio/sample_consultation_2.wav` are synthetic two-voice clips made with

@@ -1,0 +1,156 @@
+{
+  "source": "outputs/sample_consultation_2_roles.json",
+  "models": {
+    "DISEASE": "alvaroalon2/biobert_diseases_ner",
+    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  },
+  "label_notes": {
+    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
+    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+  },
+  "unsupported_labels": {
+    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
+    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
+  },
+  "conversation": [
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 0.0,
+      "end": 2.96,
+      "text": "Hi doctor, thanks for seeing me at short notice.",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 3.4,
+      "end": 5.56,
+      "text": "Of course. What seems to be the problem?",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 5.96,
+      "end": 9.36,
+      "text": "My head has been hurting since yesterday, and I feel dizzy.",
+      "entities": [
+        {
+          "text": "dizzy",
+          "label": "DISEASE",
+          "start": 53,
+          "end": 58,
+          "confidence": 0.999,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 9.76,
+      "end": 11.34,
+      "text": "Have you had any nausea or vomiting?",
+      "entities": [
+        {
+          "text": "nausea",
+          "label": "DISEASE",
+          "start": 17,
+          "end": 23,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        },
+        {
+          "text": "vomiting",
+          "label": "DISEASE",
+          "start": 27,
+          "end": 35,
+          "confidence": 0.999,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 11.78,
+      "end": 12.08,
+      "text": "Yes.",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 12.52,
+      "end": 14.02,
+      "text": "Let me check your blood pressure.",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 14.32,
+      "end": 14.94,
+      "text": "Is it serious?",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 15.42,
+      "end": 20.48,
+      "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse.",
+      "entities": [
+        {
+          "text": "migraine",
+          "label": "DISEASE",
+          "start": 16,
+          "end": 24,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        },
+        {
+          "text": "pain",
+          "label": "DISEASE",
+          "start": 61,
+          "end": 65,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 20.86,
+      "end": 22.24,
+      "text": "Okay. Thank you.",
+      "entities": []
+    }
+  ],
+  "summary": {
+    "DISEASE": [
+      {
+        "text": "dizzy",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "nausea",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "vomiting",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "migraine",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "pain",
+        "speaker": "DOCTOR"
+      }
+    ]
+  }
+}

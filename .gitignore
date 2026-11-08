@@ -20,3 +20,5 @@ outputs/*
 !outputs/sample_consultation_aligned.json
 !outputs/sample_consultation_roles.json
 !outputs/sample_consultation_2*.json
+!outputs/sample_consultation_clinical_entities.json
+!outputs/example_transcript_clinical_entities.json

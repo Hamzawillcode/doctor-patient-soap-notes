@@ -1,0 +1,93 @@
+{
+  "source": "outputs/sample_consultation_roles.json",
+  "models": {
+    "DISEASE": "alvaroalon2/biobert_diseases_ner",
+    "CHEMICAL": "alvaroalon2/biobert_chemical_ner"
+  },
+  "label_notes": {
+    "DISEASE": "Diseases AND signs/symptoms (BC5CDR annotation scheme); symptom vs disease is not distinguished.",
+    "CHEMICAL": "Chemicals including drugs; not limited to medications."
+  },
+  "unsupported_labels": {
+    "DURATION": "No BioBERT NER checkpoint is trained with a duration label.",
+    "SEVERITY": "No BioBERT NER checkpoint is trained with a severity label."
+  },
+  "conversation": [
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 0.0,
+      "end": 2.08,
+      "text": "Good morning, what brings you in today?",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 2.84,
+      "end": 6.42,
+      "text": "I have been experiencing fever for three days, and a dry cough.",
+      "entities": [
+        {
+          "text": "fever",
+          "label": "DISEASE",
+          "start": 25,
+          "end": 30,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        },
+        {
+          "text": "dry cough",
+          "label": "DISEASE",
+          "start": 53,
+          "end": 62,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_diseases_ner"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": "SPEAKER_00",
+      "start": 7.0,
+      "end": 9.16,
+      "text": "Have you taken any medication for it?",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": "SPEAKER_01",
+      "start": 9.7,
+      "end": 13.6,
+      "text": "Just paracetamol, 500 milligrams, twice a day.",
+      "entities": [
+        {
+          "text": "paracetamol",
+          "label": "CHEMICAL",
+          "start": 5,
+          "end": 16,
+          "confidence": 1.0,
+          "model": "alvaroalon2/biobert_chemical_ner"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "DISEASE": [
+      {
+        "text": "fever",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "dry cough",
+        "speaker": "PATIENT"
+      }
+    ],
+    "CHEMICAL": [
+      {
+        "text": "paracetamol",
+        "speaker": "PATIENT"
+      }
+    ]
+  }
+}
