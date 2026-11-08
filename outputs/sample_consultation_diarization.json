@@ -1,0 +1,51 @@
+{
+  "audio_file": "audio/sample_consultation.wav",
+  "pipeline": "pyannote/speaker-diarization-community-1",
+  "duration": 14.21,
+  "processing_seconds": 3.27,
+  "num_speakers_found": 2,
+  "speakers": [
+    {
+      "speaker": "SPEAKER_00",
+      "start": 0.03,
+      "end": 2.46
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 2.88,
+      "end": 6.54
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 7.07,
+      "end": 9.35
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 9.7,
+      "end": 13.78
+    }
+  ],
+  "exclusive_speakers": [
+    {
+      "speaker": "SPEAKER_00",
+      "start": 0.03,
+      "end": 2.46
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 2.88,
+      "end": 6.54
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 7.07,
+      "end": 9.35
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 9.7,
+      "end": 13.78
+    }
+  ]
+}

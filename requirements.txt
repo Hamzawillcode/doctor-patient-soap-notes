@@ -1,0 +1,3 @@
+faster-whisper==1.2.1
+# av 19 removed an argument faster-whisper 1.2.1 still uses
+av==18.1.0

@@ -1,0 +1,266 @@
+{
+  "audio_file": "audio/sample_consultation.wav",
+  "model": "small",
+  "language": "en",
+  "duration": 14.21,
+  "full_transcript": "Good morning, what brings you in today? I have been experiencing fever for three days, and a dry cough. Have you taken any medication for it? Just paracetamol, 500 milligrams, twice a day.",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 2.08,
+      "text": "Good morning, what brings you in today?"
+    },
+    {
+      "id": 2,
+      "start": 2.84,
+      "end": 6.42,
+      "text": "I have been experiencing fever for three days, and a dry cough."
+    },
+    {
+      "id": 3,
+      "start": 7.0,
+      "end": 9.16,
+      "text": "Have you taken any medication for it?"
+    },
+    {
+      "id": 4,
+      "start": 9.7,
+      "end": 13.6,
+      "text": "Just paracetamol, 500 milligrams, twice a day."
+    }
+  ],
+  "words": [
+    {
+      "word": "Good",
+      "start": 0.0,
+      "end": 0.2,
+      "probability": 0.915,
+      "segment_id": 1
+    },
+    {
+      "word": "morning,",
+      "start": 0.2,
+      "end": 0.52,
+      "probability": 0.908,
+      "segment_id": 1
+    },
+    {
+      "word": "what",
+      "start": 0.96,
+      "end": 1.14,
+      "probability": 0.953,
+      "segment_id": 1
+    },
+    {
+      "word": "brings",
+      "start": 1.14,
+      "end": 1.48,
+      "probability": 0.997,
+      "segment_id": 1
+    },
+    {
+      "word": "you",
+      "start": 1.48,
+      "end": 1.7,
+      "probability": 0.998,
+      "segment_id": 1
+    },
+    {
+      "word": "in",
+      "start": 1.7,
+      "end": 1.82,
+      "probability": 0.99,
+      "segment_id": 1
+    },
+    {
+      "word": "today?",
+      "start": 1.82,
+      "end": 2.08,
+      "probability": 0.994,
+      "segment_id": 1
+    },
+    {
+      "word": "I",
+      "start": 2.84,
+      "end": 3.02,
+      "probability": 0.978,
+      "segment_id": 2
+    },
+    {
+      "word": "have",
+      "start": 3.02,
+      "end": 3.18,
+      "probability": 0.979,
+      "segment_id": 2
+    },
+    {
+      "word": "been",
+      "start": 3.18,
+      "end": 3.36,
+      "probability": 0.998,
+      "segment_id": 2
+    },
+    {
+      "word": "experiencing",
+      "start": 3.36,
+      "end": 3.88,
+      "probability": 0.997,
+      "segment_id": 2
+    },
+    {
+      "word": "fever",
+      "start": 3.88,
+      "end": 4.4,
+      "probability": 0.992,
+      "segment_id": 2
+    },
+    {
+      "word": "for",
+      "start": 4.4,
+      "end": 4.66,
+      "probability": 0.999,
+      "segment_id": 2
+    },
+    {
+      "word": "three",
+      "start": 4.66,
+      "end": 4.9,
+      "probability": 0.499,
+      "segment_id": 2
+    },
+    {
+      "word": "days,",
+      "start": 4.9,
+      "end": 5.26,
+      "probability": 0.999,
+      "segment_id": 2
+    },
+    {
+      "word": "and",
+      "start": 5.52,
+      "end": 5.7,
+      "probability": 0.996,
+      "segment_id": 2
+    },
+    {
+      "word": "a",
+      "start": 5.7,
+      "end": 5.82,
+      "probability": 0.997,
+      "segment_id": 2
+    },
+    {
+      "word": "dry",
+      "start": 5.82,
+      "end": 6.02,
+      "probability": 0.997,
+      "segment_id": 2
+    },
+    {
+      "word": "cough.",
+      "start": 6.02,
+      "end": 6.42,
+      "probability": 1.0,
+      "segment_id": 2
+    },
+    {
+      "word": "Have",
+      "start": 7.0,
+      "end": 7.26,
+      "probability": 0.984,
+      "segment_id": 3
+    },
+    {
+      "word": "you",
+      "start": 7.26,
+      "end": 7.38,
+      "probability": 0.999,
+      "segment_id": 3
+    },
+    {
+      "word": "taken",
+      "start": 7.38,
+      "end": 7.68,
+      "probability": 0.996,
+      "segment_id": 3
+    },
+    {
+      "word": "any",
+      "start": 7.68,
+      "end": 7.98,
+      "probability": 0.998,
+      "segment_id": 3
+    },
+    {
+      "word": "medication",
+      "start": 7.98,
+      "end": 8.48,
+      "probability": 0.991,
+      "segment_id": 3
+    },
+    {
+      "word": "for",
+      "start": 8.48,
+      "end": 8.88,
+      "probability": 0.999,
+      "segment_id": 3
+    },
+    {
+      "word": "it?",
+      "start": 8.88,
+      "end": 9.16,
+      "probability": 0.999,
+      "segment_id": 3
+    },
+    {
+      "word": "Just",
+      "start": 9.7,
+      "end": 9.98,
+      "probability": 0.993,
+      "segment_id": 4
+    },
+    {
+      "word": "paracetamol,",
+      "start": 9.98,
+      "end": 10.86,
+      "probability": 0.959,
+      "segment_id": 4
+    },
+    {
+      "word": "500",
+      "start": 11.1,
+      "end": 11.62,
+      "probability": 0.94,
+      "segment_id": 4
+    },
+    {
+      "word": "milligrams,",
+      "start": 11.62,
+      "end": 12.24,
+      "probability": 0.38,
+      "segment_id": 4
+    },
+    {
+      "word": "twice",
+      "start": 12.82,
+      "end": 13.08,
+      "probability": 0.996,
+      "segment_id": 4
+    },
+    {
+      "word": "a",
+      "start": 13.08,
+      "end": 13.32,
+      "probability": 0.999,
+      "segment_id": 4
+    },
+    {
+      "word": "day.",
+      "start": 13.32,
+      "end": 13.6,
+      "probability": 1.0,
+      "segment_id": 4
+    }
+  ]
+}

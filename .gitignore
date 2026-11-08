@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Secrets (never commit Hugging Face tokens)
+.env
+
+# Patient audio and its outputs are private: ignored by default.
+# Only the synthetic sample clip and its outputs are committed.
+audio/*
+!audio/sample_consultation.wav
+outputs/*
+!outputs/sample_consultation.json
+!outputs/sample_consultation_diarization.json
