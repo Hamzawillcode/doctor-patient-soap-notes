@@ -13,7 +13,10 @@ __pycache__/
 # Only the synthetic sample clip and its outputs are committed.
 audio/*
 !audio/sample_consultation.wav
+!audio/sample_consultation_2.wav
 outputs/*
 !outputs/sample_consultation.json
 !outputs/sample_consultation_diarization.json
 !outputs/sample_consultation_aligned.json
+!outputs/sample_consultation_roles.json
+!outputs/sample_consultation_2*.json

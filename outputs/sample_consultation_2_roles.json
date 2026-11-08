@@ -1,0 +1,169 @@
+{
+  "audio_file": "audio/sample_consultation_2.wav",
+  "source": "outputs/sample_consultation_2_aligned.json",
+  "method": "rule-based linguistic cues",
+  "roles": {
+    "SPEAKER_00": "DOCTOR",
+    "SPEAKER_01": "PATIENT"
+  },
+  "confidence": "high",
+  "score_gap": 2.5,
+  "needs_review": false,
+  "speakers": {
+    "SPEAKER_01": {
+      "utterances": 5,
+      "words": 27,
+      "talk_time": 8.66,
+      "doctor_points": 1.5,
+      "patient_points": 4.0,
+      "evidence": [
+        {
+          "role": "patient",
+          "cue": "body part 'my ...'",
+          "text": "My head has been hurting since yesterday, and I feel dizzy."
+        },
+        {
+          "role": "patient",
+          "cue": "feelings",
+          "text": "My head has been hurting since yesterday, and I feel dizzy."
+        },
+        {
+          "role": "patient",
+          "cue": "own history",
+          "text": "My head has been hurting since yesterday, and I feel dizzy."
+        },
+        {
+          "role": "doctor",
+          "cue": "asks a question (x1)",
+          "text": "Is it serious?"
+        },
+        {
+          "role": "patient",
+          "cue": "asking about own condition",
+          "text": "Is it serious?"
+        },
+        {
+          "role": "doctor",
+          "cue": "speaks first (weak hint)",
+          "text": ""
+        }
+      ],
+      "score": -0.5
+    },
+    "SPEAKER_00": {
+      "utterances": 4,
+      "words": 39,
+      "talk_time": 10.3,
+      "doctor_points": 8.0,
+      "patient_points": 0.0,
+      "evidence": [
+        {
+          "role": "doctor",
+          "cue": "asks a question (x1)",
+          "text": "Of course. What seems to be the problem?"
+        },
+        {
+          "role": "doctor",
+          "cue": "opening question",
+          "text": "Of course. What seems to be the problem?"
+        },
+        {
+          "role": "doctor",
+          "cue": "asks a question (x1)",
+          "text": "Have you had any nausea or vomiting?"
+        },
+        {
+          "role": "doctor",
+          "cue": "history question",
+          "text": "Have you had any nausea or vomiting?"
+        },
+        {
+          "role": "doctor",
+          "cue": "symptom question",
+          "text": "Have you had any nausea or vomiting?"
+        },
+        {
+          "role": "doctor",
+          "cue": "examination",
+          "text": "Let me check your blood pressure."
+        },
+        {
+          "role": "doctor",
+          "cue": "plan / prescription",
+          "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse."
+        },
+        {
+          "role": "doctor",
+          "cue": "assessment",
+          "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse."
+        }
+      ],
+      "score": 2.0
+    }
+  },
+  "utterances": [
+    {
+      "speaker": "SPEAKER_01",
+      "start": 0.0,
+      "end": 2.96,
+      "text": "Hi doctor, thanks for seeing me at short notice.",
+      "role": "PATIENT"
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 3.4,
+      "end": 5.56,
+      "text": "Of course. What seems to be the problem?",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 5.96,
+      "end": 9.36,
+      "text": "My head has been hurting since yesterday, and I feel dizzy.",
+      "role": "PATIENT"
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 9.76,
+      "end": 11.34,
+      "text": "Have you had any nausea or vomiting?",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 11.78,
+      "end": 12.08,
+      "text": "Yes.",
+      "role": "PATIENT"
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 12.52,
+      "end": 14.02,
+      "text": "Let me check your blood pressure.",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 14.32,
+      "end": 14.94,
+      "text": "Is it serious?",
+      "role": "PATIENT"
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 15.42,
+      "end": 20.48,
+      "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse.",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 20.86,
+      "end": 22.24,
+      "text": "Okay. Thank you.",
+      "role": "PATIENT"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "audio_file": "audio/sample_consultation.wav",
+  "source": "outputs/sample_consultation_aligned.json",
+  "method": "rule-based linguistic cues",
+  "roles": {
+    "SPEAKER_00": "DOCTOR",
+    "SPEAKER_01": "PATIENT"
+  },
+  "confidence": "high",
+  "score_gap": 3.75,
+  "needs_review": false,
+  "speakers": {
+    "SPEAKER_00": {
+      "utterances": 2,
+      "words": 14,
+      "talk_time": 4.24,
+      "doctor_points": 5.5,
+      "patient_points": 0.0,
+      "evidence": [
+        {
+          "role": "doctor",
+          "cue": "asks a question (x1)",
+          "text": "Good morning, what brings you in today?"
+        },
+        {
+          "role": "doctor",
+          "cue": "opening question",
+          "text": "Good morning, what brings you in today?"
+        },
+        {
+          "role": "doctor",
+          "cue": "asks a question (x1)",
+          "text": "Have you taken any medication for it?"
+        },
+        {
+          "role": "doctor",
+          "cue": "history question",
+          "text": "Have you taken any medication for it?"
+        },
+        {
+          "role": "doctor",
+          "cue": "symptom question",
+          "text": "Have you taken any medication for it?"
+        },
+        {
+          "role": "doctor",
+          "cue": "speaks first (weak hint)",
+          "text": ""
+        }
+      ],
+      "score": 2.75
+    },
+    "SPEAKER_01": {
+      "utterances": 2,
+      "words": 19,
+      "talk_time": 7.48,
+      "doctor_points": 0.0,
+      "patient_points": 2.0,
+      "evidence": [
+        {
+          "role": "patient",
+          "cue": "own symptoms",
+          "text": "I have been experiencing fever for three days, and a dry cough."
+        },
+        {
+          "role": "patient",
+          "cue": "own history",
+          "text": "Just paracetamol, 500 milligrams, twice a day."
+        }
+      ],
+      "score": -1.0
+    }
+  },
+  "utterances": [
+    {
+      "speaker": "SPEAKER_00",
+      "start": 0.0,
+      "end": 2.08,
+      "text": "Good morning, what brings you in today?",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 2.84,
+      "end": 6.42,
+      "text": "I have been experiencing fever for three days, and a dry cough.",
+      "role": "PATIENT"
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 7.0,
+      "end": 9.16,
+      "text": "Have you taken any medication for it?",
+      "role": "DOCTOR"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 9.7,
+      "end": 13.6,
+      "text": "Just paracetamol, 500 milligrams, twice a day.",
+      "role": "PATIENT"
+    }
+  ]
+}
