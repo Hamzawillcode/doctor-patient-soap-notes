@@ -1,0 +1,217 @@
+{
+  "source": "outputs/sample_consultation_2_clinical_entities.json",
+  "ner_model_set": "maccrobat",
+  "facts": [
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "hurting",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 2,
+          "speaker": "PATIENT",
+          "text": "My head has been hurting since yesterday, and I feel dizzy.",
+          "start": 5.96,
+          "end": 9.36
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "dizzy",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 2,
+          "speaker": "PATIENT",
+          "text": "My head has been hurting since yesterday, and I feel dizzy.",
+          "start": 5.96,
+          "end": 9.36
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "nausea",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 3,
+          "speaker": "DOCTOR",
+          "text": "Have you had any nausea or vomiting?",
+          "start": 9.76,
+          "end": 11.34
+        },
+        {
+          "utterance": 4,
+          "speaker": "PATIENT",
+          "text": "Yes.",
+          "start": 11.78,
+          "end": 12.08
+        }
+      ],
+      "method": "question-answer (present)"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "vomiting",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 3,
+          "speaker": "DOCTOR",
+          "text": "Have you had any nausea or vomiting?",
+          "start": 9.76,
+          "end": 11.34
+        },
+        {
+          "utterance": 4,
+          "speaker": "PATIENT",
+          "text": "Yes.",
+          "start": 11.78,
+          "end": 12.08
+        }
+      ],
+      "method": "question-answer (present)"
+    },
+    {
+      "section": "O",
+      "type": "examination",
+      "text": "Let me check your blood pressure.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 5,
+          "speaker": "DOCTOR",
+          "text": "Let me check your blood pressure.",
+          "start": 12.52,
+          "end": 14.02
+        }
+      ],
+      "method": "examination cue"
+    },
+    {
+      "section": "S",
+      "type": "patient_concern",
+      "text": "Is it serious?",
+      "status": "asked",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 6,
+          "speaker": "PATIENT",
+          "text": "Is it serious?",
+          "start": 14.32,
+          "end": 14.94
+        }
+      ],
+      "method": "patient question"
+    },
+    {
+      "section": "A",
+      "type": "doctor_impression",
+      "text": "migraine",
+      "status": "stated by doctor",
+      "label": "Disease_disorder",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 7,
+          "speaker": "DOCTOR",
+          "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse.",
+          "start": 15.42,
+          "end": 20.48,
+          "sentence": "It looks like a migraine."
+        }
+      ],
+      "method": "assessment cue / doctor-stated disease"
+    },
+    {
+      "section": "P",
+      "type": "doctor_plan",
+      "text": "I will prescribe something for the pain.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 7,
+          "speaker": "DOCTOR",
+          "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse.",
+          "start": 15.42,
+          "end": 20.48,
+          "sentence": "I will prescribe something for the pain."
+        }
+      ],
+      "method": "plan cue"
+    },
+    {
+      "section": "P",
+      "type": "doctor_plan",
+      "text": "Come back if it gets worse.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 7,
+          "speaker": "DOCTOR",
+          "text": "It looks like a migraine. I will prescribe something for the pain. Come back if it gets worse.",
+          "start": 15.42,
+          "end": 20.48,
+          "sentence": "Come back if it gets worse."
+        }
+      ],
+      "method": "plan cue"
+    }
+  ],
+  "unused_utterances": [
+    {
+      "utterance": 0,
+      "speaker": "PATIENT",
+      "text": "Hi doctor, thanks for seeing me at short notice.",
+      "start": 0.0,
+      "end": 2.96
+    },
+    {
+      "utterance": 1,
+      "speaker": "DOCTOR",
+      "text": "Of course. What seems to be the problem?",
+      "start": 3.4,
+      "end": 5.56
+    },
+    {
+      "utterance": 8,
+      "speaker": "PATIENT",
+      "text": "Okay. Thank you.",
+      "start": 20.86,
+      "end": 22.24
+    }
+  ],
+  "template_note": "SUBJECTIVE\n  Reported symptoms/conditions: hurting; dizzy; nausea; vomiting\n  Patient questions/concerns: \"Is it serious?\"\nOBJECTIVE\n  - \"Let me check your blood pressure.\"\nASSESSMENT (as stated by the doctor)\n  - migraine  [\"It looks like a migraine.\"]\nPLAN (as stated by the doctor)\n  - \"I will prescribe something for the pain.\"\n  - \"Come back if it gets worse.\"",
+  "rules": {
+    "answer_yes": "^(yes|yeah|yep|yup|i do|i have|i did|i am|i'm|a little|a bit|sometimes|definitely|correct|right|mm-?hmm)\\b",
+    "answer_no": "^(no|nope|nah|not really|never|i don't|i do not|i haven't|i have not|i didn't|i'm not|none)\\b",
+    "negation_cues": "\\b(no|not|never|without|denies|deny|denied|don't|do not|haven't|have not|hasn't|didn't|isn't|no history of)\\b",
+    "objective_cues": "\\blet me (examine|check|look|listen|feel|take)\\b|\\b(blood pressure|temperature|pulse|heart rate|oxygen|saturation|weight|lungs?|chest sounds?|heart sounds?|abdomen|throat|ears?)\\b.*\\b(is|are|was|were|sounds?|looks?|seems?|normal|clear|high|low|elevated|red|swollen|tender)\\b|\\b\\d+(\\.\\d+)?\\s?(mmhg|degrees|°|bpm|%|kg)\\b|\\bon examination\\b|\\bexam(ination)? (shows|showed|reveals)\\b",
+    "assessment_cues": "\\b(it|this|that) (looks|sounds|seems) like\\b|\\bi think (it|this|you)\\b|\\bprobably\\b|\\blikely\\b|\\bmost likely\\b|\\bdiagnos|\\byou (have|'ve got) (a|an)\\b|\\bconsistent with\\b|\\bsuggests?\\b",
+    "plan_cues": "\\b(i('ll| will)|we('ll| will)|i('m| am) going to|let's)\\b.*\\b(prescribe|give|start|order|refer|send|arrange|book|run|do)\\b|\\bprescri|\\b(take|use|apply)\\b.*\\b(daily|a day|times|every|hours|tablets?|capsules?)\\b|\\bcome back\\b|\\bfollow[- ]?up\\b|\\breturn\\b|\\b(blood test|x-ray|scan|mri|ultrasound|referral|rest|fluids|avoid)\\b"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "source": "outputs/example_transcript_2_clinical_entities.json",
+  "ner_model_set": "maccrobat",
+  "facts": [
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "cough",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {
+        "duration": [
+          "two weeks"
+        ]
+      },
+      "evidence": [
+        {
+          "utterance": 1,
+          "speaker": "PATIENT",
+          "text": "I have had a bad cough for two weeks and some chest pain.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "pain",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 1,
+          "speaker": "PATIENT",
+          "text": "I have had a bad cough for two weeks and some chest pain.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "fever",
+      "status": "absent",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 2,
+          "speaker": "DOCTOR",
+          "text": "Any fever?",
+          "start": null,
+          "end": null
+        },
+        {
+          "utterance": 3,
+          "speaker": "PATIENT",
+          "text": "No, I haven't had any fever.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "question-answer (absent) + patient statement (negated)"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "shortness of breath",
+      "status": "unclear",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 4,
+          "speaker": "DOCTOR",
+          "text": "Do you have shortness of breath?",
+          "start": null,
+          "end": null
+        },
+        {
+          "utterance": 5,
+          "speaker": "PATIENT",
+          "text": "Only when I climb stairs.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "question-answer (unclear)"
+    },
+    {
+      "section": "S",
+      "type": "medication",
+      "text": "metformin",
+      "status": "present",
+      "label": "Medication",
+      "attributes": {
+        "dosage": [
+          "500 mg twice daily"
+        ]
+      },
+      "evidence": [
+        {
+          "utterance": 7,
+          "speaker": "PATIENT",
+          "text": "I take metformin 500 mg twice daily for my diabetes.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "O",
+      "type": "examination",
+      "text": "Let me listen to your chest.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 8,
+          "speaker": "DOCTOR",
+          "text": "Let me listen to your chest.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "examination cue"
+    },
+    {
+      "section": "O",
+      "type": "examination",
+      "text": "Your temperature is 37.2 degrees and your lungs sound clear.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 9,
+          "speaker": "DOCTOR",
+          "text": "Your temperature is 37.2 degrees and your lungs sound clear.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "examination cue"
+    },
+    {
+      "section": "A",
+      "type": "doctor_impression",
+      "text": "bronchitis",
+      "status": "stated by doctor",
+      "label": "Disease_disorder",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 10,
+          "speaker": "DOCTOR",
+          "text": "This looks like acute bronchitis.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "assessment cue / doctor-stated disease"
+    },
+    {
+      "section": "P",
+      "type": "doctor_plan",
+      "text": "I will prescribe an inhaler.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {
+        "medications": [
+          "inhaler"
+        ]
+      },
+      "evidence": [
+        {
+          "utterance": 11,
+          "speaker": "DOCTOR",
+          "text": "I will prescribe an inhaler. Come back in one week if it is not better.",
+          "start": null,
+          "end": null,
+          "sentence": "I will prescribe an inhaler."
+        }
+      ],
+      "method": "plan cue"
+    },
+    {
+      "section": "P",
+      "type": "doctor_plan",
+      "text": "Come back in one week if it is not better.",
+      "status": "stated by doctor",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 11,
+          "speaker": "DOCTOR",
+          "text": "I will prescribe an inhaler. Come back in one week if it is not better.",
+          "start": null,
+          "end": null,
+          "sentence": "Come back in one week if it is not better."
+        }
+      ],
+      "method": "plan cue"
+    },
+    {
+      "section": "S",
+      "type": "patient_concern",
+      "text": "Should I worry about the chest pain?",
+      "status": "asked",
+      "label": null,
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 12,
+          "speaker": "PATIENT",
+          "text": "Should I worry about the chest pain?",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient question"
+    }
+  ],
+  "unused_utterances": [
+    {
+      "utterance": 0,
+      "speaker": "DOCTOR",
+      "text": "Good morning. What brings you in today?",
+      "start": null,
+      "end": null
+    },
+    {
+      "utterance": 6,
+      "speaker": "DOCTOR",
+      "text": "Are you taking any medication?",
+      "start": null,
+      "end": null
+    }
+  ],
+  "template_note": "SUBJECTIVE\n  Reported symptoms/conditions: cough (duration: two weeks); pain\n  Denied: fever\n  Asked, answer unclear: shortness of breath\n  Current medications: metformin (dosage: 500 mg twice daily)\n  Patient questions/concerns: \"Should I worry about the chest pain?\"\nOBJECTIVE\n  - \"Let me listen to your chest.\"\n  - \"Your temperature is 37.2 degrees and your lungs sound clear.\"\nASSESSMENT (as stated by the doctor)\n  - bronchitis  [\"This looks like acute bronchitis.\"]\nPLAN (as stated by the doctor)\n  - \"I will prescribe an inhaler.\"\n  - \"Come back in one week if it is not better.\"",
+  "rules": {
+    "answer_yes": "^(yes|yeah|yep|yup|i do|i have|i did|i am|i'm|a little|a bit|sometimes|definitely|correct|right|mm-?hmm)\\b",
+    "answer_no": "^(no|nope|nah|not really|never|i don't|i do not|i haven't|i have not|i didn't|i'm not|none)\\b",
+    "negation_cues": "\\b(no|not|never|without|denies|deny|denied|don't|do not|haven't|have not|hasn't|didn't|isn't|no history of)\\b",
+    "objective_cues": "\\blet me (examine|check|look|listen|feel|take)\\b|\\b(blood pressure|temperature|pulse|heart rate|oxygen|saturation|weight|lungs?|chest sounds?|heart sounds?|abdomen|throat|ears?)\\b.*\\b(is|are|was|were|sounds?|looks?|seems?|normal|clear|high|low|elevated|red|swollen|tender)\\b|\\b\\d+(\\.\\d+)?\\s?(mmhg|degrees|°|bpm|%|kg)\\b|\\bon examination\\b|\\bexam(ination)? (shows|showed|reveals)\\b",
+    "assessment_cues": "\\b(it|this|that) (looks|sounds|seems) like\\b|\\bi think (it|this|you)\\b|\\bprobably\\b|\\blikely\\b|\\bmost likely\\b|\\bdiagnos|\\byou (have|'ve got) (a|an)\\b|\\bconsistent with\\b|\\bsuggests?\\b",
+    "plan_cues": "\\b(i('ll| will)|we('ll| will)|i('m| am) going to|let's)\\b.*\\b(prescribe|give|start|order|refer|send|arrange|book|run|do)\\b|\\bprescri|\\b(take|use|apply)\\b.*\\b(daily|a day|times|every|hours|tablets?|capsules?)\\b|\\bcome back\\b|\\bfollow[- ]?up\\b|\\breturn\\b|\\b(blood test|x-ray|scan|mri|ultrasound|referral|rest|fluids|avoid)\\b"
+  }
+}

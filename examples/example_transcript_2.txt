@@ -1,0 +1,13 @@
+DOCTOR: Good morning. What brings you in today?
+PATIENT: I have had a bad cough for two weeks and some chest pain.
+DOCTOR: Any fever?
+PATIENT: No, I haven't had any fever.
+DOCTOR: Do you have shortness of breath?
+PATIENT: Only when I climb stairs.
+DOCTOR: Are you taking any medication?
+PATIENT: I take metformin 500 mg twice daily for my diabetes.
+DOCTOR: Let me listen to your chest.
+DOCTOR: Your temperature is 37.2 degrees and your lungs sound clear.
+DOCTOR: This looks like acute bronchitis.
+DOCTOR: I will prescribe an inhaler. Come back in one week if it is not better.
+PATIENT: Should I worry about the chest pain?

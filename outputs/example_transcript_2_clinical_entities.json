@@ -1,0 +1,303 @@
+{
+  "source": "examples/example_transcript_2.txt",
+  "model_set": "maccrobat",
+  "models": [
+    "models/biobert-maccrobat-ner"
+  ],
+  "label_to_category": {
+    "Sign_symptom": "SYMPTOM",
+    "Disease_disorder": "DISEASE",
+    "Medication": "MEDICATION",
+    "Duration": "DURATION",
+    "Severity": "SEVERITY",
+    "Dosage": "DOSAGE",
+    "Frequency": "FREQUENCY"
+  },
+  "label_notes": {
+    "*": "Labels from MACCROBAT2018 annotation guidelines; model fine-tuned by train_biobert_ner.py - see models/biobert-maccrobat-ner/training_metrics.json for per-label test precision/recall/F1."
+  },
+  "unsupported_labels": {},
+  "conversation": [
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Good morning. What brings you in today?",
+      "entities": []
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "I have had a bad cough for two weeks and some chest pain.",
+      "entities": [
+        {
+          "text": "cough",
+          "label": "Sign_symptom",
+          "start": 17,
+          "end": 22,
+          "confidence": 0.9138,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        },
+        {
+          "text": "two weeks",
+          "label": "Duration",
+          "start": 27,
+          "end": 36,
+          "confidence": 0.8816,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DURATION"
+        },
+        {
+          "text": "pain",
+          "label": "Sign_symptom",
+          "start": 52,
+          "end": 56,
+          "confidence": 0.9749,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Any fever?",
+      "entities": [
+        {
+          "text": "fever",
+          "label": "Sign_symptom",
+          "start": 4,
+          "end": 9,
+          "confidence": 0.8869,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "No, I haven't had any fever.",
+      "entities": [
+        {
+          "text": "fever",
+          "label": "Sign_symptom",
+          "start": 22,
+          "end": 27,
+          "confidence": 0.9227,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Do you have shortness of breath?",
+      "entities": [
+        {
+          "text": "shortness of breath",
+          "label": "Sign_symptom",
+          "start": 12,
+          "end": 31,
+          "confidence": 0.7924,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Only when I climb stairs.",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Are you taking any medication?",
+      "entities": [
+        {
+          "text": "medication",
+          "label": "Medication",
+          "start": 19,
+          "end": 29,
+          "confidence": 0.5898,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "I take metformin 500 mg twice daily for my diabetes.",
+      "entities": [
+        {
+          "text": "metformin",
+          "label": "Medication",
+          "start": 7,
+          "end": 16,
+          "confidence": 0.9578,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
+        },
+        {
+          "text": "500 mg twice daily",
+          "label": "Dosage",
+          "start": 17,
+          "end": 35,
+          "confidence": 0.8861,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DOSAGE"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Let me listen to your chest.",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Your temperature is 37.2 degrees and your lungs sound clear.",
+      "entities": []
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "This looks like acute bronchitis.",
+      "entities": [
+        {
+          "text": "bronchitis",
+          "label": "Disease_disorder",
+          "start": 22,
+          "end": 32,
+          "confidence": 0.8611,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "DISEASE"
+        }
+      ]
+    },
+    {
+      "speaker": "DOCTOR",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "I will prescribe an inhaler. Come back in one week if it is not better.",
+      "entities": [
+        {
+          "text": "inhaler",
+          "label": "Medication",
+          "start": 20,
+          "end": 27,
+          "confidence": 0.5454,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "MEDICATION"
+        }
+      ]
+    },
+    {
+      "speaker": "PATIENT",
+      "speaker_label": null,
+      "start": null,
+      "end": null,
+      "text": "Should I worry about the chest pain?",
+      "entities": [
+        {
+          "text": "pain",
+          "label": "Sign_symptom",
+          "start": 31,
+          "end": 35,
+          "confidence": 0.8607,
+          "model": "models/biobert-maccrobat-ner",
+          "category": "SYMPTOM"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "Sign_symptom": [
+      {
+        "text": "cough",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "pain",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "fever",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "fever",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "shortness of breath",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "pain",
+        "speaker": "PATIENT"
+      }
+    ],
+    "Duration": [
+      {
+        "text": "two weeks",
+        "speaker": "PATIENT"
+      }
+    ],
+    "Medication": [
+      {
+        "text": "medication",
+        "speaker": "DOCTOR"
+      },
+      {
+        "text": "metformin",
+        "speaker": "PATIENT"
+      },
+      {
+        "text": "inhaler",
+        "speaker": "DOCTOR"
+      }
+    ],
+    "Dosage": [
+      {
+        "text": "500 mg twice daily",
+        "speaker": "PATIENT"
+      }
+    ],
+    "Disease_disorder": [
+      {
+        "text": "bronchitis",
+        "speaker": "DOCTOR"
+      }
+    ]
+  }
+}

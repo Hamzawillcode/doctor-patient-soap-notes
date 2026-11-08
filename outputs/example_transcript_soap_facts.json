@@ -1,0 +1,107 @@
+{
+  "source": "outputs/example_transcript_clinical_entities.json",
+  "ner_model_set": "maccrobat",
+  "facts": [
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "fever",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {
+        "duration": [
+          "three days"
+        ]
+      },
+      "evidence": [
+        {
+          "utterance": 0,
+          "speaker": "PATIENT",
+          "text": "I have had fever for three days and a severe headache.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "headache",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 0,
+          "speaker": "PATIENT",
+          "text": "I have had fever for three days and a severe headache.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    },
+    {
+      "section": "S",
+      "type": "symptom",
+      "text": "cough",
+      "status": "present",
+      "label": "Sign_symptom",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 1,
+          "speaker": "DOCTOR",
+          "text": "Do you have a cough?",
+          "start": null,
+          "end": null
+        },
+        {
+          "utterance": 2,
+          "speaker": "PATIENT",
+          "text": "Yes, I have had a mild cough since yesterday.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "question-answer (present) + patient statement"
+    },
+    {
+      "section": "S",
+      "type": "medication",
+      "text": "paracetamol",
+      "status": "present",
+      "label": "Medication",
+      "attributes": {},
+      "evidence": [
+        {
+          "utterance": 4,
+          "speaker": "PATIENT",
+          "text": "I took paracetamol.",
+          "start": null,
+          "end": null
+        }
+      ],
+      "method": "patient statement"
+    }
+  ],
+  "unused_utterances": [
+    {
+      "utterance": 3,
+      "speaker": "DOCTOR",
+      "text": "Are you taking any medication?",
+      "start": null,
+      "end": null
+    }
+  ],
+  "template_note": "SUBJECTIVE\n  Reported symptoms/conditions: fever (duration: three days); headache; cough\n  Current medications: paracetamol\nOBJECTIVE\n  Not documented in the conversation.\nASSESSMENT (as stated by the doctor)\n  Not documented in the conversation.\nPLAN (as stated by the doctor)\n  Not documented in the conversation.",
+  "rules": {
+    "answer_yes": "^(yes|yeah|yep|yup|i do|i have|i did|i am|i'm|a little|a bit|sometimes|definitely|correct|right|mm-?hmm)\\b",
+    "answer_no": "^(no|nope|nah|not really|never|i don't|i do not|i haven't|i have not|i didn't|i'm not|none)\\b",
+    "negation_cues": "\\b(no|not|never|without|denies|deny|denied|don't|do not|haven't|have not|hasn't|didn't|isn't|no history of)\\b",
+    "objective_cues": "\\blet me (examine|check|look|listen|feel|take)\\b|\\b(blood pressure|temperature|pulse|heart rate|oxygen|saturation|weight|lungs?|chest sounds?|heart sounds?|abdomen|throat|ears?)\\b.*\\b(is|are|was|were|sounds?|looks?|seems?|normal|clear|high|low|elevated|red|swollen|tender)\\b|\\b\\d+(\\.\\d+)?\\s?(mmhg|degrees|°|bpm|%|kg)\\b|\\bon examination\\b|\\bexam(ination)? (shows|showed|reveals)\\b",
+    "assessment_cues": "\\b(it|this|that) (looks|sounds|seems) like\\b|\\bi think (it|this|you)\\b|\\bprobably\\b|\\blikely\\b|\\bmost likely\\b|\\bdiagnos|\\byou (have|'ve got) (a|an)\\b|\\bconsistent with\\b|\\bsuggests?\\b",
+    "plan_cues": "\\b(i('ll| will)|we('ll| will)|i('m| am) going to|let's)\\b.*\\b(prescribe|give|start|order|refer|send|arrange|book|run|do)\\b|\\bprescri|\\b(take|use|apply)\\b.*\\b(daily|a day|times|every|hours|tablets?|capsules?)\\b|\\bcome back\\b|\\bfollow[- ]?up\\b|\\breturn\\b|\\b(blood test|x-ray|scan|mri|ultrasound|referral|rest|fluids|avoid)\\b"
+  }
+}

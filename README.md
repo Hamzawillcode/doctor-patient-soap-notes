@@ -10,7 +10,8 @@ built one stage at a time.
 | 3. Timestamp alignment (max temporal overlap) | done | `align.py` | `docs/03_timestamp_alignment_notes.pdf` |
 | 4. Doctor / patient role identification (rule-based) | done | `identify_roles.py` | `docs/04_role_identification_notes.pdf` |
 | 5. Clinical NER (BioBERT) | done | `clinical_extraction.py` | `docs/05_clinical_ner_biobert_notes.pdf` |
-| 6. SOAP note generation | not started | | |
+| 6a. SOAP structured facts (rules, grounded) | done | `build_soap_facts.py` | `docs/06_soap_generation_notes.pdf` |
+| 6b. SOAP note writing (pretrained Transformer LM) + grounding check | next | | |
 
 ## Setup
 
@@ -35,6 +36,8 @@ python identify_roles.py audio/sample_consultation.wav  # -> outputs/sample_cons
 python clinical_extraction.py audio/sample_consultation.wav   # -> outputs/sample_consultation_clinical_entities.json
 python clinical_extraction.py --transcript examples/example_transcript.txt
 python clinical_extraction.py --transcript examples/example_transcript.txt --models bc5cdr   # public BioBERT checkpoints
+python build_soap_facts.py audio/sample_consultation.wav   # -> outputs/sample_consultation_soap_facts.json
+python build_soap_facts.py --entities outputs/example_transcript_2_clinical_entities.json
 ```
 
 `audio/sample_consultation.wav` and `audio/sample_consultation_2.wav` are synthetic two-voice clips made with

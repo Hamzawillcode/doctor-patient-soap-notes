@@ -24,7 +24,9 @@ outputs/*
 !outputs/example_transcript_clinical_entities.json
 !outputs/biobert_maccrobat_training_metrics.json
 
+!outputs/*_soap_facts.json
+!outputs/example_transcript_2_clinical_entities.json
+
 # Fine-tuned model weights (~430 MB) and the downloaded dataset: recreate with the README steps
 models/
 data/
-
