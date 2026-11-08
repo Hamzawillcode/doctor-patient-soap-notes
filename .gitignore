@@ -16,3 +16,4 @@ audio/*
 outputs/*
 !outputs/sample_consultation.json
 !outputs/sample_consultation_diarization.json
+!outputs/sample_consultation_aligned.json

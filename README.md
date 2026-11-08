@@ -7,7 +7,7 @@ built one stage at a time.
 |---|---|---|---|
 | 1. Speech-to-text (faster-whisper) | done | `transcribe.py` | `docs/01_speech_to_text_notes.pdf` |
 | 2. Speaker diarization (pyannote.audio) | done | `diarize.py` | `docs/02_speaker_diarization_notes.pdf` |
-| 3. Timestamp alignment | not started | | |
+| 3. Timestamp alignment (max temporal overlap) | done | `align.py` | `docs/03_timestamp_alignment_notes.pdf` |
 | 4. Doctor / patient role identification | not started | | |
 | 5. Clinical NER | not started | | |
 | 6. SOAP note generation | not started | | |
@@ -29,6 +29,7 @@ accept its conditions on Hugging Face, create a Read token, then run `hf auth lo
 ```bash
 python transcribe.py audio/sample_consultation.wav     # -> outputs/sample_consultation.json
 python diarize.py audio/sample_consultation.wav        # -> outputs/sample_consultation_diarization.json
+python align.py audio/sample_consultation.wav         # -> outputs/sample_consultation_aligned.json
 ```
 
 `audio/sample_consultation.wav` is a synthetic two-voice clip made with macOS `say`.

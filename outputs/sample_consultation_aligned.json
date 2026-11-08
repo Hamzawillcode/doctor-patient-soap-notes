@@ -1,0 +1,311 @@
+{
+  "audio_file": "audio/sample_consultation.wav",
+  "sources": {
+    "stt": "outputs/sample_consultation.json",
+    "diarization": "outputs/sample_consultation_diarization.json",
+    "speaker_timeline": "exclusive_speakers"
+  },
+  "settings": {
+    "max_gap": 0.5
+  },
+  "summary": {
+    "total_words": 33,
+    "by_method": {
+      "overlap": 33
+    },
+    "unknown_words": 0
+  },
+  "full_transcript": "Good morning, what brings you in today? I have been experiencing fever for three days, and a dry cough. Have you taken any medication for it? Just paracetamol, 500 milligrams, twice a day.",
+  "utterances": [
+    {
+      "speaker": "SPEAKER_00",
+      "start": 0.0,
+      "end": 2.08,
+      "text": "Good morning, what brings you in today?"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 2.84,
+      "end": 6.42,
+      "text": "I have been experiencing fever for three days, and a dry cough."
+    },
+    {
+      "speaker": "SPEAKER_00",
+      "start": 7.0,
+      "end": 9.16,
+      "text": "Have you taken any medication for it?"
+    },
+    {
+      "speaker": "SPEAKER_01",
+      "start": 9.7,
+      "end": 13.6,
+      "text": "Just paracetamol, 500 milligrams, twice a day."
+    }
+  ],
+  "words": [
+    {
+      "word": "Good",
+      "start": 0.0,
+      "end": 0.2,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.17
+    },
+    {
+      "word": "morning,",
+      "start": 0.2,
+      "end": 0.52,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.32
+    },
+    {
+      "word": "what",
+      "start": 0.96,
+      "end": 1.14,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.18
+    },
+    {
+      "word": "brings",
+      "start": 1.14,
+      "end": 1.48,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.34
+    },
+    {
+      "word": "you",
+      "start": 1.48,
+      "end": 1.7,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.22
+    },
+    {
+      "word": "in",
+      "start": 1.7,
+      "end": 1.82,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.12
+    },
+    {
+      "word": "today?",
+      "start": 1.82,
+      "end": 2.08,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.26
+    },
+    {
+      "word": "I",
+      "start": 2.84,
+      "end": 3.02,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.14
+    },
+    {
+      "word": "have",
+      "start": 3.02,
+      "end": 3.18,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.16
+    },
+    {
+      "word": "been",
+      "start": 3.18,
+      "end": 3.36,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.18
+    },
+    {
+      "word": "experiencing",
+      "start": 3.36,
+      "end": 3.88,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.52
+    },
+    {
+      "word": "fever",
+      "start": 3.88,
+      "end": 4.4,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.52
+    },
+    {
+      "word": "for",
+      "start": 4.4,
+      "end": 4.66,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.26
+    },
+    {
+      "word": "three",
+      "start": 4.66,
+      "end": 4.9,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.24
+    },
+    {
+      "word": "days,",
+      "start": 4.9,
+      "end": 5.26,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.36
+    },
+    {
+      "word": "and",
+      "start": 5.52,
+      "end": 5.7,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.18
+    },
+    {
+      "word": "a",
+      "start": 5.7,
+      "end": 5.82,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.12
+    },
+    {
+      "word": "dry",
+      "start": 5.82,
+      "end": 6.02,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.2
+    },
+    {
+      "word": "cough.",
+      "start": 6.02,
+      "end": 6.42,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.4
+    },
+    {
+      "word": "Have",
+      "start": 7.0,
+      "end": 7.26,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.19
+    },
+    {
+      "word": "you",
+      "start": 7.26,
+      "end": 7.38,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.12
+    },
+    {
+      "word": "taken",
+      "start": 7.38,
+      "end": 7.68,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.3
+    },
+    {
+      "word": "any",
+      "start": 7.68,
+      "end": 7.98,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.3
+    },
+    {
+      "word": "medication",
+      "start": 7.98,
+      "end": 8.48,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.5
+    },
+    {
+      "word": "for",
+      "start": 8.48,
+      "end": 8.88,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.4
+    },
+    {
+      "word": "it?",
+      "start": 8.88,
+      "end": 9.16,
+      "speaker": "SPEAKER_00",
+      "assignment": "overlap",
+      "overlap": 0.28
+    },
+    {
+      "word": "Just",
+      "start": 9.7,
+      "end": 9.98,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.28
+    },
+    {
+      "word": "paracetamol,",
+      "start": 9.98,
+      "end": 10.86,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.88
+    },
+    {
+      "word": "500",
+      "start": 11.1,
+      "end": 11.62,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.52
+    },
+    {
+      "word": "milligrams,",
+      "start": 11.62,
+      "end": 12.24,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.62
+    },
+    {
+      "word": "twice",
+      "start": 12.82,
+      "end": 13.08,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.26
+    },
+    {
+      "word": "a",
+      "start": 13.08,
+      "end": 13.32,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.24
+    },
+    {
+      "word": "day.",
+      "start": 13.32,
+      "end": 13.6,
+      "speaker": "SPEAKER_01",
+      "assignment": "overlap",
+      "overlap": 0.28
+    }
+  ]
+}
