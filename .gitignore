@@ -32,3 +32,8 @@ outputs/*
 # Fine-tuned model weights (~430 MB) and the downloaded dataset: recreate with the README steps
 models/
 data/
+
+# Web app: uploaded recordings/transcripts and pipeline logs are patient data
+uploads/
+logs/
+outputs/consult_*

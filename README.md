@@ -1,7 +1,7 @@
 # Doctor–Patient Conversation → SOAP Notes
 
-A learning project that will convert doctor–patient conversation audio into structured SOAP notes,
-built one stage at a time.
+A learning project that converts doctor–patient conversation audio into structured SOAP notes,
+built one stage at a time, and served as a web app (FastAPI + Streamlit + PostgreSQL).
 
 | Stage | Status | Script | Notes |
 |---|---|---|---|
@@ -12,6 +12,7 @@ built one stage at a time.
 | 5. Clinical NER (BioBERT) | done | `clinical_extraction.py` | `docs/05_clinical_ner_biobert_notes.pdf` |
 | 6a. SOAP structured facts (rules, grounded) | done | `build_soap_facts.py` | `docs/06_soap_generation_notes.pdf` |
 | 6b/6c. SOAP note writing (pretrained Qwen3-4B-Instruct, local) + grounding check | done | `generate_soap_note.py` | `docs/06_soap_generation_notes.pdf` |
+| 7. Full-stack app: REST API, async pipeline jobs, PostgreSQL, clinician review UI | done | `app/`, `streamlit_app.py` | `docs/07_fullstack_app_notes.pdf` |
 
 ## Setup
 
@@ -45,6 +46,39 @@ python generate_soap_note.py --facts outputs/example_transcript_2_soap_facts.jso
 `audio/sample_consultation.wav` and `audio/sample_consultation_2.wav` are synthetic two-voice clips made with
 macOS `say` (clip 2 is harder: the patient speaks first and pauses are only 0.15 s).
 Other files in `audio/` and `outputs/` are git-ignored so real patient recordings are never committed.
+
+## Web app (Stage 7)
+
+```
+Streamlit UI  --HTTP-->  FastAPI (app/main.py)  --SQLAlchemy-->  PostgreSQL (consultations, note_versions)
+                               |
+                               └─ background job (app/pipeline.py): runs the 7 stage scripts as async child processes
+```
+
+```bash
+pip install -r requirements-app.txt
+brew install postgresql@16 && brew services start postgresql@16
+/opt/homebrew/opt/postgresql@16/bin/createdb soap_notes      # tables are created on first API start
+
+uvicorn app.main:app --port 8000          # REST API; interactive docs at http://localhost:8000/docs
+streamlit run streamlit_app.py            # UI at http://localhost:8501 (second terminal)
+```
+
+Set `DATABASE_URL` (default `postgresql+psycopg://localhost/soap_notes`) or `API_URL` (default `http://localhost:8000`)
+to point elsewhere. Upload a recording (all 7 stages) or paste a `DOCTOR: ... / PATIENT: ...` transcript (NER → facts → LM),
+watch progress live, then edit, version and approve the SOAP note. Jobs run one at a time (the models need ~8 GB).
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/health` | API + database check |
+| POST | `/consultations/audio` | upload audio → `202`, pipeline runs in the background |
+| POST | `/consultations/transcript` | JSON `{title, text}` → `202` |
+| GET | `/consultations`, `/consultations/{id}` | list / status, progress and all results |
+| DELETE | `/consultations/{id}` | remove a finished consultation |
+| GET, POST | `/consultations/{id}/notes` | note version history / save a clinician edit |
+| POST | `/consultations/{id}/approve` | sign off and lock the note |
+
+Uploads go to `uploads/` and job logs to `logs/` (both git-ignored). There is no authentication: run it locally only.
 
 ## Stage 5: fine-tuning BioBERT on MACCROBAT2018
 
